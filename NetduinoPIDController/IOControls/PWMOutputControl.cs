@@ -1,7 +1,3 @@
-using System;
-using Microsoft.SPOT;
-using SecretLabs.NETMF.Hardware;
-using SecretLabs.NETMF.Hardware.Netduino;
 using Microsoft.SPOT.Hardware;
 using NetduinoPIDController.Helpers;
 
