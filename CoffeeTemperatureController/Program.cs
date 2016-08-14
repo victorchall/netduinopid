@@ -20,10 +20,8 @@ namespace CoffeeTemperatureController
 
             PIDController pid = new PIDController(pidParams);
 
-            pid.FahrenheitSetPoint = 180f;
-            
             // TODO: Read on on/off button, read a pot or stepper for temp setting, output to display, etc. 
-
+            //pid.FahrenheitSetPoint = 180f;
             //pid.Enable();
             //Thread.Sleep(60 * 1000);
             //pid.Disable();

@@ -10,6 +10,4 @@ hardware the goal of the project is to enourage code reuse and ease of design
 rather than runtime optimization.  Those looking for very high frequency
 calculation may want to look elsewhere, or simply handcode their loop. 
 
-
-
-
+Written using Visual Studio Community 2015

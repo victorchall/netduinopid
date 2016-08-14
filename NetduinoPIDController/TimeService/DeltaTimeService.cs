@@ -5,7 +5,7 @@ namespace NetduinoPIDController.TimeService
 {
     public class DeltaTimeService : ITimeService
     {
-        private DateTime _lastTime = DateTime.MinValue;
+        private readonly DateTime _lastTime;
 
         public DeltaTimeService()
         {

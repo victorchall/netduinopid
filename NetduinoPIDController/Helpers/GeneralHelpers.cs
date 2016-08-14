@@ -21,18 +21,12 @@ namespace NetduinoPIDController.Helpers
 
         public static float Min(float a, float b)
         {
-            if (a < b)
-                return a;
-
-            return b;
+            return a < b ? a : b;
         }
 
         public static float Max(float a, float b)
         {
-            if (a > b)
-                return a;
-
-            return b;
+            return a > b ? a : b;
         }
 
         public static float Clamp(double x)

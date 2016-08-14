@@ -9,24 +9,19 @@ namespace NetduinoPIDController
 {
     public class PIDController
     {
+        private readonly PIDControllerParameters _pidParameters;
         private Thread _pidRun;
         private float _setPoint;
-        private IInputControl _input;
-        private IOutputControl _output;
-        private IFeedbackControl[] _controls;
 
-        private int _pidFrequency = 1;
-        
+        private const int PIDFrequency = 1;
+
         /// <summary>
         /// Controller for PID temperature control system
         /// </summary>
-        /// <param name="temperatureInput">Channel where temperature sensor is connected</param>
         public PIDController(PIDControllerParameters pidParameters)
         {
-            _input = pidParameters.InputControl;
-            _output = pidParameters.OutputControl;
+            _pidParameters = pidParameters;
             _setPoint = pidParameters.SetPoint;
-            _controls = pidParameters.FeedbackControls;
         }
 
         /// <summary>
@@ -57,19 +52,19 @@ namespace NetduinoPIDController
         
         public void Enable()
         {
-            foreach (var control in _controls)
+            foreach (var control in _pidParameters.FeedbackControls)
             {
                 control.Reset();
             }
 
-            _pidRun = new Thread(new ThreadStart(Run));
+            _pidRun = new Thread(Run);
         }
 
         public void Disable()
         {
             _pidRun.Abort();
 
-            foreach (var control in _controls)
+            foreach (var control in _pidParameters.FeedbackControls)
             {
                 control.Reset();
             }
@@ -78,7 +73,7 @@ namespace NetduinoPIDController
 
         private void Run()
         {
-            var period = (1000 / _pidFrequency);
+            var period = (1000 / PIDFrequency);
             while (true)
             {
                 try
@@ -86,7 +81,7 @@ namespace NetduinoPIDController
                     Thread.Sleep(period);
                     var error = GetError();
                     var duty = GetControlsSummation(error);
-                    _output.DriveOutput(duty);
+                    _pidParameters.OutputControl.DriveOutput(duty);
                 }
                 catch
                 { }
@@ -95,14 +90,14 @@ namespace NetduinoPIDController
 
         private float GetError()
         {
-            return FahrenheitSetPoint - _input.ReadValue();
+            return FahrenheitSetPoint - _pidParameters.InputControl.ReadValue();
         }
 
         private float GetControlsSummation(float error)
         {
             float dc = 0;
 
-            foreach(var control in _controls)
+            foreach(var control in _pidParameters.FeedbackControls)
             {
                 dc += control.GetValue(error);
             }

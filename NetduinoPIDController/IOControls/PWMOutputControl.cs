@@ -9,7 +9,7 @@ namespace NetduinoPIDController.IOControls
 {
     public class PWMOutputControl : IOutputControl
     {
-        private PWM _pwm;
+        private readonly PWM _pwm;
 
         public PWMOutputControl(Cpu.PWMChannel pwmChannel, double frequency)
         {

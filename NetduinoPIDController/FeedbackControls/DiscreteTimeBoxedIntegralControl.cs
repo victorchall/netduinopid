@@ -9,57 +9,36 @@ namespace NetduinoPIDController.FeedbackControls
     /// <summary>
     /// Integrates a history of error values 
     /// </summary>
-    public class TimeBoxedIntegralControl : IFeedbackControl
+    public class DiscreteTimeBoxedIntegralControl : IFeedbackControl
     {
         private float _driveIntegral;
-        private float[] _errorHistory;
+        private readonly float[] _errorHistory;
         private int _errorHistoryPreviousIndex;
-        private TransferFunction _window;
-        private ITimeService _timeService;
+        private readonly ITransferFunction _errorToDriveTransferFunction;
         
-        private TimeBoxedIntegralControl(int historyLength = 10)
+        private DiscreteTimeBoxedIntegralControl(int historyLength = 10)
         {
-            _timeService = new DiscreteTimeService();
-        }
-
-        private TimeBoxedIntegralControl(ITimeService timeService, int historyLength = 10)
-        {
-            _timeService = timeService;
             _errorHistory = new float[historyLength];
         }
 
         /// <summary>
         /// IntegralControl with a min/max wind up and a given window
         /// </summary>
-        /// <param name="floor">minimum accumualated drive value</param>
-        /// <param name="ceiling">maximum accumualated drive value</param>
         /// <param name="windowElements">window used for each iteration</param>
-        public TimeBoxedIntegralControl(WindowElement[] windowElements, int historyLength = 10) : this(historyLength)
+        /// <param name="historyLength">length of integral in discrete time</param>
+        public DiscreteTimeBoxedIntegralControl(WindowElement[] windowElements, int historyLength = 10) : this(historyLength)
         {
-            _window = new TransferFunction(windowElements);
+            _errorToDriveTransferFunction = new TableLookupTransferFunction(windowElements);
         }
 
         /// <summary>
         /// IntegralControl with limits on wind up and a gain value.
         /// </summary>
-        /// <param name="floor">Integral wind up min value, min returned by GetValue</param>
-        /// <param name="ceiling">Integral wind up max value, max returned by GetValue</param>
         /// <param name="gain">slope of drive value over error</param>
-        public TimeBoxedIntegralControl(float gain, int history) : this(10)
+        /// <param name="historyLength">length of integral in discrete time</param>
+        public DiscreteTimeBoxedIntegralControl(float gain, int historyLength) : this(historyLength)
         {
-            _window = WindowHelpers.GainWindow(gain, int.MaxValue);
-        }
-
-        /// <summary>
-        /// IntegralControl with unbounded accumulation and gain
-        /// </summary>
-        /// <param name="floor"></param>
-        /// <param name="ceiling"></param>
-        /// <param name="gain"></param>
-        public TimeBoxedIntegralControl(float gain) : this(10)
-        {
-            _window = WindowHelpers.GainWindow(gain, int.MaxValue);
-
+            _errorToDriveTransferFunction = new GainTransferFunction(gain);
         }
 
         public void Reset()
@@ -74,7 +53,7 @@ namespace NetduinoPIDController.FeedbackControls
         /// <returns>Accumulated error drive value</returns>
         public float GetValue(float error)
         {
-            _driveIntegral += _window.GetValue(error);
+            _driveIntegral += _errorToDriveTransferFunction.GetValue(error);
 
             StoreDriveIntegral();
 

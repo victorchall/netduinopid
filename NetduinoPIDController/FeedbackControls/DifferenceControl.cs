@@ -8,22 +8,16 @@ namespace NetduinoPIDController.FeedbackControls
     /// </summary>
     public class DifferenceControl : IFeedbackControl
     {
-        private TransferFunction _window;
-        private ITimeService _timeProvider;
+        private readonly ITransferFunction _transferFunction;
         private float _previousError;
-        
-        private DifferenceControl()
-        {
-            _timeProvider = new DiscreteTimeService();
-        }
 
         /// <summary>
         /// DerivativeControl with unbounded drive using discrete time
         /// </summary>
         /// <param name="gain">slope of drive over 1st derivative of error</param>
-        public DifferenceControl(float gain) : this()
+        public DifferenceControl(float gain)
         {
-            _window = WindowHelpers.GainWindow(gain, int.MaxValue);            
+            _transferFunction = new GainTransferFunction(gain);
         }
 
         public void Reset()
@@ -38,11 +32,11 @@ namespace NetduinoPIDController.FeedbackControls
         /// <returns>Accumulated error drive value</returns>
         public float GetValue(float error)
         {
-            float derivative = error / _previousError;
+            var deltaError = error - _previousError;
 
             _previousError = error;
 
-            return _window.GetValue(derivative);
+            return _transferFunction.GetValue(deltaError);
         }
     }
 }

@@ -6,21 +6,22 @@ namespace NetduinoPIDController.FeedbackControls
 {
     public class ProportionalControl : IFeedbackControl
     {
-        private TransferFunction _window;
+        private readonly ITransferFunction _transferFunction;
 
         public ProportionalControl(float gain)
         {
-            _window = WindowHelpers.GainWindow(gain);
+            _transferFunction = new GainTransferFunction(gain);
         }
 
-        public ProportionalControl(TransferFunction window)
+        public ProportionalControl(TableLookupTransferFunction transferFunction)
         {
-            _window = window;
+            if (transferFunction == null) throw new ArgumentNullException(nameof(transferFunction));
+            _transferFunction = transferFunction;
         }
 
         public float GetValue(float error)
         {
-            return _window.GetValue(error);
+            return _transferFunction.GetValue(error);
         }
 
         public void Reset()

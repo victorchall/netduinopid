@@ -8,16 +8,16 @@ namespace NetduinoPIDController.IOControls
 {
     public abstract class AbstractAnalogInput : IInputControl
     {
-        protected AnalogInput _inputChannel;
+        protected AnalogInput InputChannel;
 
-        public AbstractAnalogInput(Cpu.AnalogChannel inputChannel)
+        protected AbstractAnalogInput(Cpu.AnalogChannel inputChannel)
         {
-            _inputChannel = new AnalogInput(inputChannel);
+            InputChannel = new AnalogInput(inputChannel);
         }
 
         public virtual float ReadValue()
         {
-            double rawInput = _inputChannel.Read();
+            double rawInput = InputChannel.Read();
             return Helpers.GeneralHelpers.Clamp(rawInput);
         }        
     }

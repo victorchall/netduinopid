@@ -37,12 +37,13 @@
   <ItemGroup>
     <Compile Include="Helpers\ControlHelpers.cs" />
     <Compile Include="TimeService\DeltaTimeService.cs" />
-    <Compile Include="Window\TransferFunction.cs" />
+    <Compile Include="Window\GainTransferFunction.cs" />
+    <Compile Include="Window\ITransferFunction.cs" />
+    <Compile Include="Window\TableLookupTransferFunction.cs" />
     <Compile Include="Window\WindowElement.cs" />
-    <Compile Include="Window\WindowHelpers.cs" />
     <Compile Include="FeedbackControls\IFeedbackControl.cs" />
     <Compile Include="FeedbackControls\DifferenceControl.cs" />
-    <Compile Include="FeedbackControls\TimeBoxedIntegralControl.cs" />
+    <Compile Include="FeedbackControls\DiscreteTimeBoxedIntegralControl.cs" />
     <Compile Include="Helpers\GeneralHelpers.cs" />
     <Compile Include="IOControls\IInputControl.cs" />
     <Compile Include="IOControls\AbstractAnalogInput.cs" />
