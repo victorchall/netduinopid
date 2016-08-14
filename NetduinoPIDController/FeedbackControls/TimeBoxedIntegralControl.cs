@@ -19,7 +19,7 @@ namespace NetduinoPIDController.FeedbackControls
         
         private TimeBoxedIntegralControl(int historyLength = 10)
         {
-            _timeService = new DiscreteTimeProvider();
+            _timeService = new DiscreteTimeService();
         }
 
         private TimeBoxedIntegralControl(ITimeService timeService, int historyLength = 10)

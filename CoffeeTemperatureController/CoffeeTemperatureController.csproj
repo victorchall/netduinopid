@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <AssemblyName>NetduinoPIDController</AssemblyName>
-    <OutputType>Library</OutputType>
-    <RootNamespace>NetduinoPIDController</RootNamespace>
+    <AssemblyName>CoffeeTemperatureController</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CoffeeTemperatureController</RootNamespace>
     <ProjectTypeGuids>{b69e3092-b931-443c-abe7-7e7b65f2a37f};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A08D779F-F732-44F9-912C-89A21E1CE5DB}</ProjectGuid>
+    <ProjectGuid>{F8BFBCA5-8FD5-402B-8BFE-54E21DAEE6A8}</ProjectGuid>
     <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
     <NetMfTargetsBaseDir Condition="'$(NetMfTargetsBaseDir)'==''">$(MSBuildExtensionsPath32)\Microsoft\.NET Micro Framework\</NetMfTargetsBaseDir>
     <DeployDevice>Netduino</DeployDevice>
@@ -30,31 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
-    <Compile Include="Helpers\ControlHelpers.cs" />
-    <Compile Include="TimeService\DeltaTimeService.cs" />
-    <Compile Include="Window\TransferFunction.cs" />
-    <Compile Include="Window\WindowElement.cs" />
-    <Compile Include="Window\WindowHelpers.cs" />
-    <Compile Include="FeedbackControls\IFeedbackControl.cs" />
-    <Compile Include="FeedbackControls\DifferenceControl.cs" />
-    <Compile Include="FeedbackControls\TimeBoxedIntegralControl.cs" />
-    <Compile Include="Helpers\GeneralHelpers.cs" />
-    <Compile Include="IOControls\IInputControl.cs" />
-    <Compile Include="IOControls\AbstractAnalogInput.cs" />
-    <Compile Include="IOControls\IOutputControl.cs" />
-    <Compile Include="IOControls\PWMOutputControl.cs" />
-    <Compile Include="TimeService\ITimeService.cs" />
-    <Compile Include="FeedbackControls\DiscreteSummationControl.cs" />
-    <Compile Include="TimeService\DiscreteTimeService.cs" />
-    <Compile Include="PIDController.cs" />
-    <Compile Include="FeedbackControls\ProportionalControl.cs" />
-    <Compile Include="PIDControllerParameters.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="TemperatureInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.SPOT.Hardware" />
@@ -66,5 +47,11 @@
     <Reference Include="SecretLabs.NETMF.Hardware.Netduino" />
     <Reference Include="System" />
     <Reference Include="GoBus" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetduinoPIDController\NetduinoPIDController.csproj">
+      <Project>{A08D779F-F732-44F9-912C-89A21E1CE5DB}</Project>
+      <Name>NetduinoPIDController</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,5 +1,3 @@
-using System;
-using Microsoft.SPOT;
 using NetduinoPIDController.TimeService;
 using NetduinoPIDController.Window;
 
@@ -16,11 +14,11 @@ namespace NetduinoPIDController.FeedbackControls
         
         private DifferenceControl()
         {
-            _timeProvider = new DiscreteTimeProvider();
+            _timeProvider = new DiscreteTimeService();
         }
 
         /// <summary>
-        /// DerivativeControl with unbounded drive
+        /// DerivativeControl with unbounded drive using discrete time
         /// </summary>
         /// <param name="gain">slope of drive over 1st derivative of error</param>
         public DifferenceControl(float gain) : this()

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB5A5B4C-E607-471F-BC54-5B108BAB8D02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetduinoPIDController.Tests</RootNamespace>
+    <AssemblyName>NetduinoPIDController.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SPOT.Hardware">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Assemblies\le\Microsoft.SPOT.Hardware.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SPOT.Hardware.PWM">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Assemblies\le\Microsoft.SPOT.Hardware.PWM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SPOT.Hardware.SerialPort">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Assemblies\le\Microsoft.SPOT.Hardware.SerialPort.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SPOT.Native">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Assemblies\le\Microsoft.SPOT.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SPOT.Net">
+      <HintPath>..\..\..\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Assemblies\le\Microsoft.SPOT.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Diagnostics">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.AnalogInput">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.AnalogInput.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.Netduino">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.Netduino.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.NetduinoGo">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.NetduinoGo.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.NetduinoMini">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.NetduinoMini.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.NetduinoPlus">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.NetduinoPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.Hardware.PWM">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.Hardware.PWM.dll</HintPath>
+    </Reference>
+    <Reference Include="SecretLabs.NETMF.IO">
+      <HintPath>..\..\..\Program Files (x86)\Secret Labs\Netduino SDK\Assemblies\v4.3\SecretLabs.NETMF.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.JustMock, Version=2016.2.426.1, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\JustMock.2016.2.426.1\lib\Net35\Telerik.JustMock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlTests.cs" />
+    <Compile Include="NetduinoPIDControllerTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetduinoPIDController\NetduinoPIDController.csproj">
+      <Project>{a08d779f-f732-44f9-912c-89a21e1ce5db}</Project>
+      <Name>NetduinoPIDController</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

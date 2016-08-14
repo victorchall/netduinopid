@@ -7,7 +7,7 @@ namespace NetduinoPIDController.Window
     {
         public static TransferFunction GainWindow(float gain)
         {
-            return GainWindow(gain, int.MaxValue);
+            return GainWindow(gain, 10000);
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace NetduinoPIDController.Window
         /// <returns></returns>
         public static TransferFunction GainWindow(float gain, int size)
         {
-            WindowElement[] elements = new WindowElement[]
+            var elements = new []
             {
                 new WindowElement(-size, -size * gain),
                 new WindowElement(size, size * gain)

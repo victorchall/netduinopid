@@ -3,11 +3,11 @@ using NetduinoPIDController.Helpers;
 
 namespace NetduinoPIDController.TimeService
 {
-    public class DeltaTimeProvider : ITimeService
+    public class DeltaTimeService : ITimeService
     {
         private DateTime _lastTime = DateTime.MinValue;
 
-        public DeltaTimeProvider()
+        public DeltaTimeService()
         {
             _lastTime = DateTime.Now;
         }
