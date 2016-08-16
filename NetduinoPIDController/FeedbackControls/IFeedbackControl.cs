@@ -6,11 +6,11 @@ namespace NetduinoPIDController.FeedbackControls
         /// Get feedback value, iterating if applicable
         /// </summary>
         /// <param name="error">Target minus actual</param>
-        /// <returns>Amount to add to feedback control</returns>
+        /// <returns>Value to add to total feedback control</returns>
         float GetValue(float error);
 
         /// <summary>
-        /// Reset any stored history in controller.
+        /// Reset any stored history or state in controller.
         /// </summary>
         void Reset();
     }

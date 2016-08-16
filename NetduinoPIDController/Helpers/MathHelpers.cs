@@ -3,7 +3,7 @@ using Microsoft.SPOT;
 
 namespace NetduinoPIDController.Helpers
 {
-    public static class GeneralHelpers
+    public static class MathHelpers
     {
         /// <summary>
         /// Converts Timespan to seconds

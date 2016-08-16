@@ -5,7 +5,7 @@ using NetduinoPIDController;
 
 namespace NetduinoPIDController.Window
 {
-    public class TableLookupTransferFunction : ITransferFunction
+    public class TableLookupLinearTransferFunction : ILinearTransferFunction
     {
         private readonly WindowElement[] _window;
 
@@ -13,7 +13,7 @@ namespace NetduinoPIDController.Window
         /// Defines error to drive amount.  Error value must increase in order of array!
         /// </summary>
         /// <param name="window">Error to drive value lookups.  Error values MUST increase!</param>
-        public TableLookupTransferFunction(WindowElement[] window)
+        public TableLookupLinearTransferFunction(WindowElement[] window)
         {
             var previous = float.MinValue;
             foreach(var current in window)

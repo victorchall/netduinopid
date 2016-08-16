@@ -9,14 +9,14 @@ namespace NetduinoPIDController.Window
         public float OutValue { get; }
 
         /// <summary>
-        /// Correlates an error amount to corresponding drive value to use. 
+        /// Correlates a key and value
         /// </summary>
-        /// <param name="error"></param>
-        /// <param name="driveValue"></param>
-        public WindowElement (float error, float driveValue)
+        /// <param name="inValue">key for lookup</param>
+        /// <param name="outValue">related value</param>
+        public WindowElement (float inValue, float outValue)
         {
-            InValue = error;
-            OutValue = driveValue;
+            InValue = inValue;
+            OutValue = outValue;
         }
     }
 }

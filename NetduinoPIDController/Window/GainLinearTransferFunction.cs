@@ -1,10 +1,10 @@
 ﻿namespace NetduinoPIDController.Window
 {
-    public class GainTransferFunction : ITransferFunction
+    public class GainLinearTransferFunction : ILinearTransferFunction
     {
         private readonly float _gain;
 
-        public GainTransferFunction(float gain)
+        public GainLinearTransferFunction(float gain)
         {
             _gain = gain;
         }

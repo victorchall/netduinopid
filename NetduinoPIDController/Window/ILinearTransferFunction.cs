@@ -1,6 +1,6 @@
 ﻿namespace NetduinoPIDController.Window
 {
-    public interface ITransferFunction
+    public interface ILinearTransferFunction
     {
         float GetValue(float error);
     }

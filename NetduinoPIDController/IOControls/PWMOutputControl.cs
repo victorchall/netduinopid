@@ -18,8 +18,8 @@ namespace NetduinoPIDController.IOControls
         /// <param name="driveValue">0 to 100</param>
         public void DriveOutput(float driveValue)
         {
-            driveValue = GeneralHelpers.Min(driveValue, 100f);
-            driveValue = GeneralHelpers.Max(driveValue, 0f);
+            driveValue = MathHelpers.Min(driveValue, 100f);
+            driveValue = MathHelpers.Max(driveValue, 0f);
 
             _pwm.DutyCycle = driveValue;
         }

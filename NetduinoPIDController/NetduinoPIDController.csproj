@@ -37,14 +37,14 @@
   <ItemGroup>
     <Compile Include="Helpers\ControlHelpers.cs" />
     <Compile Include="TimeService\DeltaTimeService.cs" />
-    <Compile Include="Window\GainTransferFunction.cs" />
-    <Compile Include="Window\ITransferFunction.cs" />
-    <Compile Include="Window\TableLookupTransferFunction.cs" />
+    <Compile Include="Window\GainLinearTransferFunction.cs" />
+    <Compile Include="Window\ILinearTransferFunction.cs" />
+    <Compile Include="Window\TableLookupLinearTransferFunction.cs" />
     <Compile Include="Window\WindowElement.cs" />
     <Compile Include="FeedbackControls\IFeedbackControl.cs" />
     <Compile Include="FeedbackControls\DifferenceControl.cs" />
     <Compile Include="FeedbackControls\DiscreteTimeBoxedIntegralControl.cs" />
-    <Compile Include="Helpers\GeneralHelpers.cs" />
+    <Compile Include="Helpers\MathHelpers.cs" />
     <Compile Include="IOControls\IInputControl.cs" />
     <Compile Include="IOControls\AbstractAnalogInput.cs" />
     <Compile Include="IOControls\IOutputControl.cs" />
@@ -63,6 +63,5 @@
     <Reference Include="Microsoft.SPOT.Native" />
     <Reference Include="Microsoft.SPOT.Net" />
     <Reference Include="System" />
-    <Reference Include="GoBus" />
   </ItemGroup>
 </Project>

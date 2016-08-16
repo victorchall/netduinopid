@@ -16,7 +16,7 @@ namespace NetduinoPIDController.IOControls
         public virtual float ReadValue()
         {
             double rawInput = InputChannel.Read();
-            return Helpers.GeneralHelpers.Clamp(rawInput);
+            return Helpers.MathHelpers.Clamp(rawInput);
         }        
     }
 }
